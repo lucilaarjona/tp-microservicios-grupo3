@@ -1,0 +1,41 @@
+server:
+  port: ${PORT:${SERVER_PORT:8080}}
+
+spring:
+  application:
+    name: ms-gateway
+  cloud:
+    gateway:
+      default-filters:
+        - name: FilterCustom
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: api-music
+          uri: lb://api-music
+          predicates:
+            - Path=/api/v1/musics/**
+        - id: api-playlist
+          uri: lb://api-playlist
+          predicates:
+            - Path=/api/v1/playlists/**
+
+info:
+  app:
+    name: ${spring.application.name}
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    serviceURL:
+      defaultZone: http://localhost:8761/eureka
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway
