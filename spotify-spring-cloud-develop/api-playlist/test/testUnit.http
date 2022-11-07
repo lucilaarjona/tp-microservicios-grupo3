@@ -1,0 +1,39 @@
+### Send POST request with json body
+POST http://localhost:8082/api/v1/playlists
+Content-Type: application/json
+
+{
+  "playListId": 1,
+  "name": "PlayList 1"
+}
+
+### Send POST request with json body
+GET http://localhost:8082/api/v1/playlists
+Content-Type: application/json
+
+### Send POST request with json body
+GET http://localhost:8082/api/v1/playlists/1
+Content-Type: application/json
+
+### Send POST request with json body
+DELETE http://localhost:8082/api/v1/playlists/1
+Content-Type: application/json
+
+### Send POST request with json body
+POST http://localhost:8081/api/v1/musics
+Content-Type: application/json
+
+{
+"musicId": 12222,
+"name": "Cancion 1222",
+"singerName": "Cantante 12222"
+}
+
+### Send POST request with json body
+PATCH http://localhost:8082/api/v1/playlists/addMusic
+Content-Type: application/json
+
+{
+  "playListId": 1,
+  "musicId": 12222
+}
